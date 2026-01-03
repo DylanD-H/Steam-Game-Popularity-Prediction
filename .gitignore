@@ -1,0 +1,5 @@
+*.csv
+scripts/predict_rand.py
+scripts/test.py
+.ipynb_checkpoints
+__pycache__
