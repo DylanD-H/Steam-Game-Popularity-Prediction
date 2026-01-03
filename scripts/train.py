@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-from preprocess import SteamPreprocessor
+from .preprocess import SteamPreprocessor
 
 class SteamDataset(Dataset):
     def __init__(self, X, y):

@@ -1,7 +1,7 @@
 import torch
 import pandas as pd
-from preprocess import SteamPreprocessor
-from train import SteamNN
+from .preprocess import SteamPreprocessor
+from .train import SteamNN
 from fastapi import FastAPI
 import uvicorn
 

@@ -3,10 +3,18 @@ WORKDIR /code
 
 RUN pip install uv
 
-COPY ["pyproject.toml", "uv.lock", "scripts/predict.py", "scripts/preprocess.py", "model", "./"]
+COPY ["pyproject.toml", "uv.lock", "./"]
+COPY ["scripts", "./scripts"]
+COPY ["model", "./model"]
 
-RUN uv sync --frozen --no-dev
+RUN python -m venv .venv && \
+    .venv/bin/python -m ensurepip --upgrade
+
+RUN uv sync
+RUN ./.venv/bin/python -m pip install --upgrade pip
+RUN ./.venv/bin/python -m pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
+
 ENV PATH="/code/.venv/bin:$PATH"
 
 EXPOSE 9696
-ENTRYPOINT ["uvicorn", "predict:app", "--host", "0.0.0.0", "--port", "9696"]
+ENTRYPOINT ["uvicorn", "scripts.predict:app", "--host", "0.0.0.0", "--port", "9696"]
