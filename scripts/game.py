@@ -11,7 +11,6 @@ game = {
 'genres' : 'RPG',
 'categories' : 'Single-player;Steam Cloud;Family Sharing',
 'price' : 12.99,
-'recommendations' : 231,
 'developer' : 'SOFTSTAR TECHNOLOGY(SHANGHAI)',
 'publisher' : 'SOFTSTAR ENTERTAINMENT'
 }
@@ -26,7 +25,6 @@ game = {
 # 'genres' : 'Indie',
 # 'categories' : 'Single-player;Steam Achievements;Family Sharing',
 # 'price' : 6.99,
-# 'recommendations' : 0,
 # 'developer' : 'Vidas Salavejus',
 # 'publisher' : 'Vidas Salavejus'
 # }

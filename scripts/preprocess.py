@@ -108,7 +108,6 @@ class SteamPreprocessor:
         df.developer = df.developer.fillna('N/A')
         df.publisher = df.publisher.fillna('N/A')
 
-        df["successful"] = (df.get("recommendations", 0) > 0).astype(int)
 
         df['release_date_parsed'] = df['release_date'].apply(self.parse_release_date)
         df['release_month'] = df['release_date_parsed'].dt.month
@@ -137,7 +136,7 @@ class SteamPreprocessor:
         df_dicts = df.drop(columns=['successful'], errors='ignore').to_dict(orient='records')
         X = self.dv.transform(df_dicts)
 
-        return X, df['successful'].values
+        return X
 
     def save(self, filepath):
         with open(filepath, 'wb') as f:

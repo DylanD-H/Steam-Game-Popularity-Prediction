@@ -20,7 +20,7 @@ app = FastAPI(title="Steam Game Success Prediction")
 @app.post("/predict")
 def predict(game: dict):
     
-    X_game, y_true = preprocessor.transform(pd.DataFrame([game]))
+    X_game = preprocessor.transform(pd.DataFrame([game]))
     X_game = torch.tensor(X_game, dtype=torch.float32)
 
 
@@ -30,12 +30,10 @@ def predict(game: dict):
         pred_class = (prob >= threshold)
     
     pred_class = "Successful" if pred_class else "Unsuccessful"
-    act_class = "Successful" if y_true[0] == 1 else "Unsuccessful"
 
     return[{"key": "Game", "value": game['name']},
            {"key": "Predicted probability of success", "value": round(float(prob[0]),4)},
            {"key": "Predicted class", "value": pred_class},
-           {"key": "Actual class", "value": act_class}
     ]
 
 if __name__ == "__main__":
