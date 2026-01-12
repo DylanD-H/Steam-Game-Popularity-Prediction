@@ -19,7 +19,7 @@ It includes metadata such as:
 
 ### Instructions to access the dataset
 1. Visit the Kaggle dataset page linked above.  
-2. Download the dataset and rename it to `steam.csv`.  
+2. Download the dataset and rename it to `steam_data.csv`.  
 3. Place the dataset in the directory of the project.
 
 ---
